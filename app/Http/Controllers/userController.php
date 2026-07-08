@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 class userController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+     public function index()
     {
-        return view('user.index',[
-            'title' => 'User'
+   return view('user.index', [
+            'title' => 'User',
+            'users' => User::latest()->get()
         ]);
     }
 
@@ -21,7 +21,9 @@ class userController extends Controller
      */
     public function create()
     {
-        //
+         return view('user.create', [
+            'title' => 'Tambah User',
+        ]);
     }
 
     /**
@@ -29,8 +31,59 @@ class userController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        
+       $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'password' => 'required|string|min:8',
+            'passwordconfirm' => 'required|same:password',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg|max:1048', // Opsional, jika upload file
+            'role' => 'required|in:Superadmin,Admin',
+        ], [
+            'name.required' => 'Nama tidak boleh kosong.',
+            'name.max' => 'Nama tidak boleh lebih dari :max karakter.',
+            
+            'email.required' => 'Email tidak boleh kosong.',
+            'email.email' => 'Format email tidak valid.',
+            'email.unique' => 'Email sudah terdaftar.',
+            
+            'password.required' => 'Password tidak boleh kosong.',
+            'password.min' => 'Password minimal harus :min karakter.',
+            
+            'role.required' => 'Role harus dipilih.',
+            'role.in' => 'Role yang dipilih tidak valid.',
+        ]);
+
+        try {
+
+
+        if($request->file('avatar')){
+            $validated['avatar'] = $request->file('avatar')->store('avatar','public');
+        }
+            DB::beginTransaction();
+
+            User::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => Hash::make($validated['password']),
+                'role' => $validated['role'],
+                'avatar' => $validated['avatar'] ?? null,
+            ]);
+
+            DB::commit();
+
+            return to_route('user.index')
+                ->withSuccess('Data berhasil ditambahkan');
+
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+
+            return to_route('user.create')
+                ->withError('Data gagal ditambahkan : ' . $e->getMessage());
+        }
+        }
+    
 
     /**
      * Display the specified resource.
