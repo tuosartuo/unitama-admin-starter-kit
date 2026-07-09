@@ -24,18 +24,18 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{ asset('niceadmin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('niceadmin/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('niceadmin/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('niceadmin/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ asset('nice admin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('nice admin/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('nice admin/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('nice admin/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
 
     <!-- add on -->
-    <link rel="stylesheet" href="{{ asset('niceadmin/vendor/dataTables/css/dataTables.bootstrap5.css') }}">
-    <link href="{{ asset('niceadmin/vendor/select2/css/select2.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('niceadmin/vendor/select2/css/select2-bootstrap-5-theme.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('nice admin/vendor/dataTables/css/dataTables.bootstrap5.css') }}">
+    <link href="{{ asset('nice admin/vendor/select2/css/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('nice admin/vendor/select2/css/select2-bootstrap-5-theme.min.css') }}" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('niceadmin/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('nice admin/css/style.css') }}" rel="stylesheet">
 
     <style>
         label.required::after {
@@ -123,20 +123,20 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- add on -->
-    <script src="{{ asset('niceadmin/vendor/jquery/jquery-3.7.1.min.js') }}"></script>
-    <script src="{{ asset('niceadmin/vendor/parsley/parsley.min.js') }}"></script>
-    <script src="{{ asset('niceadmin/vendor/sweetalert2/sweetalert2@11') }}""></script>
-    <script src="{{ asset('niceadmin/vendor/dataTables/js/dataTables.js') }}"></script>
-    <script src="{{ asset('niceadmin/vendor/dataTables/js/dataTables.bootstrap5.js') }}"></script>
+    <script src="{{ asset('nice admin/vendor/jquery/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('nice admin/vendor/parsley/parsley.min.js') }}"></script>
+    <script src="{{ asset('nice admin/vendor/sweetalert2/sweetalert2@11') }}"></script>
+    <script src="{{ asset('nice admin/vendor/dataTables/js/dataTables.js') }}"></script>
+    <script src="{{ asset('nice admin/vendor/dataTables/js/dataTables.bootstrap5.js') }}"></script>
 
     <!-- Vendor JS Files -->
-    <script src="{{ asset('niceadmin/vendor/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('niceadmin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('niceadmin/vendor/tinymce/tinymce.min.js') }}"></script>
-    <script src="{{ asset('niceadmin/vendor/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('nice admin/vendor/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('nice admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('nice admin/vendor/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('nice admin/vendor/select2/js/select2.min.js') }}"></script>
 
     <!-- Template Main JS File -->
-    <script src="{{ asset('niceadmin/js/main.js') }}"></script>
+    <script src="{{ asset('nice admin/js/main.js') }}"></script>
 
     <script>
         let flashSuccess = "{{ session('success') ?? '' }}";
