@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{ $title }}</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-    <meta content="" name="author">
+    <title>{{ $setting->app_name }} | {{ $title }}</title>
+    <meta content="{{ $setting->description }}" name="description">
+    <meta content="{{ $setting->keywords }}" name="keywords">
+    <meta content="SARTUO" name="author">
 
-    {{ asset('nice admin') }}
     <!-- Favicons -->
-    <link href="{{ asset('nice admin/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('nice admin/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ $setting->logo ? asset('storage/' . $setting->logo) : asset('niceadmin/img/logo.png') }}"
+        rel="icon">
+    <link href="{{ $setting->logo ? asset('storage/' . $setting->logo) : asset('niceadmin/img/logo.png') }}"
+        rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -89,8 +90,9 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="{{ route('dashboard.index') }}" class="logo d-flex align-items-center">
-                <img src="{{ asset('nice admin/img/logo.png') }}" alt="">
-                <span class="d-none d-lg-block">NiceAdmin</span>
+                <img src="{{ $setting->logo ? asset('storage/' . $setting->logo) : asset('niceadmin/img/logo.png') }}"
+                    alt="">
+                <span class="d-none d-lg-block">{{ $setting->app_name }}</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -165,6 +167,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('setting.index') }}">
+                    <i class='bx bx-cog'></i>
+                    <span>Setting</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('user.index') }}">
                     <i class='bx bx-user-pin'></i>
                     <span>User</span>
@@ -203,7 +212,7 @@
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+            &copy; {{ $setting->app_name }}
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
